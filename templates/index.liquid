@@ -1,2 +1,15 @@
-{% assign variable = "Hello" %}
-{{ variable }}
+{% assign collection = collections['all'] %}
+{{ collection.title }}
+
+<ul>
+    {% for product in collections.products %}
+        <li>
+            <a href="{{ product.url }}"> {{ product.title }}
+                {{ product.price | money}}
+                {% if product.available != true %}
+                    (SOLD OUT)
+                {%endif%}
+            </a>
+        </li>
+    {%endfor%}
+</ul>
